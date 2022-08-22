@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "server": "nodemon app.js"
   },
   "author": "Aleksandr Khatyushin (kakdevonte@yandex.ru)",
   "license": "ISC",
@@ -13,6 +14,7 @@
     "prettier": "^2.7.1"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.1",
     "mongoose": "^6.5.2"
   }

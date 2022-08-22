@@ -5,10 +5,19 @@ const router = Router();
 
 router.post('/', async (req, res) => {
   try {
-    const { first_name, last_name, prize, photo, whenWon } = req.body;
-    const winner = new Winner({ first_name, last_name, prize, photo, whenWon });
+    const { first_name, last_name, prize, photo, isJackpot, whenWon } =
+      req.body;
+    const winner = new Winner({
+      first_name,
+      last_name,
+      prize,
+      photo,
+      isJackpot,
+      whenWon,
+    });
     await winner.save();
-    res.status(201).json({ resultCode: 0 });
+    const winners = await Winner.find();
+    res.status(201).json({ resultCode: 0, winners });
   } catch (e) {
     res.status(500).json({ resultCode: 1, message: e.message });
   }
@@ -17,7 +26,7 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
   try {
     const winners = await Winner.find();
-    res.json(winners);
+    res.json({ resultCode: 1, winners });
   } catch (error) {
     res.status(500).json({ resultCode: 1 });
   }

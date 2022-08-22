@@ -1,12 +1,19 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
+app.use(
+  cors({
+    credentials: true,
+    origin: true,
+  })
+);
 
 const PORT = 5000;
 
 app.use(express.json({ extended: true }));
-app.use('/api/winner', require('./routes/winner.routes'));
+app.use('/api/winners', require('./routes/winner.routes'));
 app.use('/api/users', require('./routes/user.routes'));
 
 async function start() {
