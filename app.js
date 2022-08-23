@@ -18,7 +18,10 @@ app.use('/api/users', require('./routes/user.routes'));
 
 async function start() {
   try {
-    await mongoose.connect('mongodb://localhost:27017/wheelOfFortune', {});
+    await mongoose.connect(
+      'mongodb+srv://Admin:xas2012@cluster0.u1ezmau.mongodb.net/app?retryWrites=true&w=majority',
+      {}
+    );
     app.listen(PORT, () =>
       console.log(`App has benn started on port ${PORT}...`)
     );
